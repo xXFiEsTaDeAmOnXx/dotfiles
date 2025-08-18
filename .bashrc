@@ -57,14 +57,27 @@ up () {
 
 ### ALIASES ###
 
-
+# we onyl use vancy colors and prompt outside of tty
+VANCY_PROMPT=no
+if [ "$TERM" != "linux" ] 
+  VANCY_PROMPT=yes
+end
 
 # Changing "ls" to "exa"
-alias ls='exa -al  --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.='exa -a | egrep "^\."'
+if ["$VANCY_PROMPT" = "yes"] then 
+  alias ls='exa -al  --color=always --group-directories-first' # my preferred listing
+  alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+  alias ll='exa -l --color=always --group-directories-first'  # long format
+  alias lt='exa -aT --color=always --group-directories-first' # tree listing
+  alias l.='exa -a | egrep "^\."'
+else
+  alias ls='eza -al  --color=never --group-directories-first' # my preferred listing
+  alias la='eza -a --color=never --group-directories-first'  # all files and dirs
+  alias ll='eza -l --color=never --group-directories-first'  # long format
+  alias lt='eza -aT --color=never --group-directories-first' # tree listing
+  alias l.='eza -a | egrep "^\."'
+
+fi
 
 # pacman and yay
 alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
@@ -82,7 +95,9 @@ alias rm='rm -i'
 
 
 # Colorize grep output (good for log files)
+if ["$VANCY_PROMPT" = "yes"] then 
 alias grep='grep --color=auto'
+fi
 
 # git
 alias addup='git add -u'

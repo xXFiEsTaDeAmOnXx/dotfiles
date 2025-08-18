@@ -14,12 +14,26 @@ end
 
 ### ALIASES ###
 
+# we onyl use vancy colors and prompt outside of tty
+set VANCY_PROMPT no
+if [ "$TERM" != "linux" ] 
+  set VANCY_PROMPT yes
+end
+
 # Changing "ls" to "exa"
-alias ls='eza -al  --color=always --group-directories-first' # my preferred listing
-alias la='eza -a --color=always --group-directories-first'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first'  # long format
-alias lt='eza -aT --color=always --group-directories-first' # tree listing
-alias l.='eza -a | egrep "^\."'
+if test "$VANCY_PROMPT" = "yes"
+  alias ls='eza -al  --color=always --group-directories-first' # my preferred listing
+  alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+  alias ll='eza -l --color=always --group-directories-first'  # long format
+  alias lt='eza -aT --color=always --group-directories-first' # tree listing
+  alias l.='eza -a | egrep "^\."'
+else
+  alias ls='eza -al  --color=never --group-directories-first' # my preferred listing
+  alias la='eza -a --color=never --group-directories-first'  # all files and dirs
+  alias ll='eza -l --color=never --group-directories-first'  # long format
+  alias lt='eza -aT --color=never --group-directories-first' # tree listing
+  alias l.='eza -a | egrep "^\."'
+end
 
 # pacman and yay
 alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
@@ -40,7 +54,9 @@ alias vim='nvim '
 
 
 # Colorize grep output (good for log files)
-alias grep='grep --color=auto'
+if test $VANCY_PROMPT = yes
+    alias grep 'grep --color=auto'
+end
 
 # git
 alias addup='git add -u'
@@ -63,11 +79,12 @@ alias jctl="journalctl -p 3 -xb"
 #search for a file
 alias search="fzf --preview 'bat --color=always {}'"
 
+
 # use zoxide
 alias z="zoxide"
 zoxide init fish | source
 
-if [ "$TERM" != "linux" ] # do not use starship in tty sine it only has limited characters in its font
+if test "$VANCY_PROMPT" = "yes"
 starship init fish | source
   if test -f  ~/.cache/ags/user/generated/terminal/sequences.txt
       cat  ~/.cache/ags/user/generated/terminal/sequences.txt
