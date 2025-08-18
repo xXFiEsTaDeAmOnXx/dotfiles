@@ -67,9 +67,11 @@ alias search="fzf --preview 'bat --color=always {}'"
 alias z="zoxide"
 zoxide init fish | source
 
+if [ "$TERM" != "linux" ] # do not use starship in tty sine it only has limited characters in its font
 starship init fish | source
-if test -f  ~/.cache/ags/user/generated/terminal/sequences.txt
-    cat  ~/.cache/ags/user/generated/terminal/sequences.txt
+  if test -f  ~/.cache/ags/user/generated/terminal/sequences.txt
+      cat  ~/.cache/ags/user/generated/terminal/sequences.txt
+  end
 end
 
 
