@@ -29,6 +29,8 @@
 !/.config/hypr/hyprland.conf
 
 #hyprland-Config
+!/.config/hypr/hyprland/general.conf
+!/.config/hypr/hyprland/display.conf
 !/.config/hypr/hyprland/colors.conf
 !/.config/hypr/hyprland/env.conf
 !/.config/hypr/hyprland/execs.conf
@@ -54,8 +56,8 @@
 !/.config/hypr/hyprlock
 !/.config/hypr/hyprlock/status.sh
 
-# hypridle-Config
-!/.config/hypr/hyprlock.conf
+# hyprpaper-Config
+!/.config/hypr/hyprpaper.conf
 
 # Systemd
 !/.config/systemd
