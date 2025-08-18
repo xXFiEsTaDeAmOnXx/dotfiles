@@ -10,7 +10,7 @@ add_newline = false
 # $character
 # """
 format = """
-$cmd_duration$directory $git_branch
+$cmd_duration$directory $git_branch  $docker_context $python $cpp $lua $java $rust $c
 $character
 """
 
@@ -97,3 +97,47 @@ format = '[](bold fg:blue)[$path ]($style)[](bold fg:blue)'
 [cmd_duration]
 min_time = 0
 format = '[](bold fg:yellow)[ $duration](bold bg:yellow fg:black)[](bold fg:yellow) •• '
+
+[docker_context]
+format = "via [$symbol$context]($style) "
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+disabled = false
+
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = '[ $symbol ($version) ]($style)'
+detect_extensions = ["py"]
+python_binary = 'python3'
+version_format = "v${raw}"
+
+
+
+[cpp]
+symbol = 'C++ '
+disabled = false
+format = '[$name $version]($style)'
+detect_extensions	= ['cpp', 'cc', 'cxx', 'c++', 'hpp', 'hh', 'hxx', 'h++', 'tcc']
+
+
+[java]
+symbol = ""
+format = '[ $symbol ($version) ]($style)'
+disabled = false
+
+[lua]
+symbol = ""
+format = '[ $symbol ($version) ]($style)'
+disabled = false
+
+
+[rust]
+symbol = ""
+format = '[ $symbol ($version) ]($style)'
+disabled = false
+
+[c]
+symbol = ""
+format = '[ $symbol ($version) ]($style)'
+disabled = false
