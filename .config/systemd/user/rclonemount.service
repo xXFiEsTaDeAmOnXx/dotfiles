@@ -1,0 +1,15 @@
+AssertPathIsDirectory=/home/niklas/OneDrive_niklas.kleiser@bwedu.de
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount \
+        --config=/home/niklas/.config/rclone/rclone.conf \
+        --vfs-cache-mode writes \
+        OneDrive: /home/niklas/OneDrive_niklas.kleiser@bwedu.de
+ExecStop=/bin/fusermount -u /home/niklas/OneDrive_niklas.kleiser@bwedu.de
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
