@@ -30,7 +30,7 @@
 
 #hyprland-Config
 !/.config/hypr/hyprland/general.conf
-!/.config/hypr/hyprland/display.conf
+#!/.config/hypr/hyprland/display.conf keep display conf on prefered
 !/.config/hypr/hyprland/colors.conf
 !/.config/hypr/hyprland/env.conf
 !/.config/hypr/hyprland/execs.conf
