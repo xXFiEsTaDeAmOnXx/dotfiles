@@ -58,6 +58,8 @@
 
 # hyprpaper-Config
 !/.config/hypr/hyprpaper.conf
+!/.config/hypr/hyprpaper
+!/.config/hypr/hyprpaper/background.jpg
 
 # Systemd
 !/.config/systemd
