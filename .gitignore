@@ -28,6 +28,8 @@
 !/.config/hypr/hyprland
 !/.config/hypr/hyprland.conf
 
+
+
 #hyprland-Config
 !/.config/hypr/hyprland/general.conf
 #!/.config/hypr/hyprland/display.conf    ! git update-index --assume-unchanged .config/hypr/hyprland/display.conf
@@ -36,6 +38,7 @@
 !/.config/hypr/hyprland/execs.conf
 !/.config/hypr/hyprland/keybinds.conf
 !/.config/hypr/hyprland/rules.conf
+
 
 # hyprland shaders
 !/.config/hypr/shaders
@@ -47,6 +50,21 @@
 !/.config/hypr/shaders/solarized.frag
 
 
+# hyprland scrips
+!/.config/hypr/hyprland/scripts
+!/.config/hypr/hyprland/scripts/fuzzel-emoji.sh
+!/.config/hypr/hyprland/scripts/launch_first_available.sh
+!/.config/hypr/hyprland/scripts/record.sh
+!/.config/hypr/hyprland/scripts/start_geoclue_agent.sh
+!/.config/hypr/hyprland/scripts/workspace_action.sh
+!/.config/hypr/hyprland/scripts/zoom.sh
+
+# hyprland ai scripts
+!/.config/hypr/hyprland/scripts/ai
+!/.config/hypr/hyprland/scripts/ai/license_show-loaded-ollama-models.txt
+!/.config/hypr/hyprland/scripts/ai/primary-buffer-query.sh
+!/.config/hypr/hyprland/scripts/ai/show-loaded-ollama-models.sh
+
 
 # hypridle-Config
 !/.config/hypr/hypridle.conf
@@ -55,6 +73,10 @@
 !/.config/hypr/hyprlock.conf
 !/.config/hypr/hyprlock
 !/.config/hypr/hyprlock/status.sh
+!/.config/hypr/hyprlock/colors.conf
+!/.config/hypr/hyprlock/check-capslock.sh
+
+
 
 # hyprpaper-Config
 # !/.config/hypr/hyprpaper.conf  git update-index --assume-unchanged .config/hypr/hyprpaper.conf
