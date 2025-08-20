@@ -14,6 +14,12 @@
 !/.config/foot/foot.ini
 
 
+
+# Foot-Config
+!/.config/kitty/
+!/.config/kitty/kitty.conf
+
+
 # Fish-Config
 !/.config/fish/
 !/.config/fish/config.fish
