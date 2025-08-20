@@ -15,9 +15,13 @@
 
 
 
-# Foot-Config
+# kitty-Config
 !/.config/kitty/
 !/.config/kitty/kitty.conf
+
+# Ranger-Config
+!/.config/ranger
+!/.config/ranger/rc.conf
 
 
 # Fish-Config
