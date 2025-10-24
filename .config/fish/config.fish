@@ -121,6 +121,7 @@ else
 end
 
 
+set -x ROS_DOMAIN_ID 99
 
 
 # function fish_prompt
