@@ -1,0 +1,11 @@
+[user]
+	email = niklas.kleiser@web.de
+	name = Niklas Kleiser
+[protocol "file"]
+	allow = always
+[credential]
+  helper = store
+[pull]
+	rebase = true
+[core]
+	editor = nvim
