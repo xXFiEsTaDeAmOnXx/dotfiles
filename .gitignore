@@ -99,4 +99,8 @@
 !/.config/systemd/user/ssh-agent.service 
 !/.config/systemd/user/rclonemount.service
 
+!.condarc
+!.gitconfig
 
+!scripts
+!scripts/update-quickshell.sh
