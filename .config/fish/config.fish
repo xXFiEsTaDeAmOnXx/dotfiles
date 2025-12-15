@@ -121,8 +121,8 @@ else
 end
 
 
-set -x ROS_DOMAIN_ID 99
-
+set -x ROS_DOMAIN_ID 97
+set -x ZOTAK_BOX_IP 192.168.66.67
 
 # function fish_prompt
 #   set_color cyan; echo (pwd)
