@@ -18,8 +18,6 @@ RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.2.linux-amd64.tar.gz
 ENV PATH="$PATH:/usr/local/go/bin"
 
 RUN curl -sS https://starship.rs/install.sh  | sh -s -- --yes
-RUN curl https://sh.rustup.rs -sSf | sh  -s -- -y
-ENV PATH="/home/niklas/.cargo/bin:${PATH}"
 
 # Addd  user
 RUN apt install sudo -y
@@ -41,6 +39,11 @@ RUN mv ros2_docker_configs/.bashrc .
 RUN touch .bash_history
 RUN mv ros2_docker_configs/.config/* .config/
 RUN rm -r ros2_docker_configs
+
+# Install rustup
+RUN curl https://sh.rustup.rs -sSf | sh  -s -- -y
+ENV PATH="/home/niklas/.cargo/bin:${PATH}"
+
 
 # copy ros2_ws and tiago_ws to the home
 RUN sudo cp -r /root/tiago_ws /home/niklas
