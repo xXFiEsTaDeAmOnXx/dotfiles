@@ -104,3 +104,6 @@
 
 !scripts
 !scripts/update-quickshell.sh
+!scripts/robocup_workspace.yml
+!scripts/Dockerfile_Workspace
+!scripts/update-docker-container.sh

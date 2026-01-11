@@ -124,6 +124,10 @@ end
 set -x ROS_DOMAIN_ID 97
 set -x ZOTAK_BOX_IP 192.168.66.67
 
+function robocup_ws
+    docker compose -f $HOME/dotfiles/scripts/robocup_workspace.yml $argv
+end
+
 # function fish_prompt
 #   set_color cyan; echo (pwd)
 #   set_color green; echo '> '
