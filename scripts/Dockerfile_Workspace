@@ -1,4 +1,4 @@
-FROM fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:sim-ir
+FROM fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:sim
 
 RUN apt update
 
