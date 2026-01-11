@@ -1,4 +1,4 @@
-FROM fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:sim
+FROM  fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:base
 
 RUN apt update
 
@@ -8,7 +8,7 @@ RUN tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ENV PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
-  && apt-get install -y nodejs
+  && apt-get install -y nodejs  unzip exa wl-clipboard ripgrep  
 RUN npm install -g npm@latest
 
 
@@ -17,19 +17,9 @@ RUN curl -LO https://go.dev/dl/go1.25.2.linux-amd64.tar.gz
 RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.2.linux-amd64.tar.gz
 ENV PATH="$PATH:/usr/local/go/bin"
 
-RUN apt install  unzip -y
-
-
 RUN curl -sS https://starship.rs/install.sh  | sh -s -- --yes
-
 RUN curl https://sh.rustup.rs -sSf | sh  -s -- -y
-
-
-RUN apt install exa -y
-
-RUN apt install  wl-clipboard
-
-RUN apt install ripgrep -y
+ENV PATH="/home/niklas/.cargo/bin:${PATH}"
 
 # Addd  user
 RUN apt install sudo -y
@@ -52,11 +42,6 @@ RUN touch .bash_history
 RUN mv ros2_docker_configs/.config/* .config/
 RUN rm -r ros2_docker_configs
 
-# Install rustup
-RUN curl https://sh.rustup.rs -sSf | sh  -s -- -y
-ENV PATH="/home/niklas/.cargo/bin:${PATH}"
-
-
 # copy ros2_ws and tiago_ws to the home
 RUN sudo cp -r /root/tiago_ws /home/niklas
 RUN sudo mv /root/ros2_ws  /root/rwu_ws
@@ -66,10 +51,11 @@ RUN cd /home/niklas/rwu_ws && rm -rf build/ install/ log/&& source /opt/ros/humb
 RUN sudo chown  niklas:niklas -R /home/niklas/tiago_ws/
 RUN cd /home/niklas/tiago_ws && rm -rf build/ install/ log/ && source /opt/ros/humble/setup.bash && colcon build
 
-RUN sudo apt install ros-humble-rqt-robot-steering -y
-
 RUN echo '#!/bin/bash' > /home/niklas/entrypoint.sh \
  && echo 'exec "$@"' >> /home/niklas/entrypoint.sh \
  && chmod +x /home/niklas/entrypoint.sh
 ENTRYPOINT ["/home/niklas/entrypoint.sh"]
+
+RUN sudo chmod 777 /root
+RUN sudo chown -R niklas:niklas /root
 
