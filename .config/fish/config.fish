@@ -121,8 +121,14 @@ else
 end
 
 
+set -x TERM xterm-256color # fix for ssh
+
 set -x ROS_DOMAIN_ID 97
-set -x ZOTAK_BOX_IP 192.168.66.67
+set -x TIAGO_BASE root@192.168.66.66
+set -x ZOTAK_BOX iki@192.168.66.67
+set -x TIAGO_JETSON iki@192.168.66.68
+set -x TIAGO_STEAMDECK  iki@192.168.66.69
+
 
 function robocup_ws
     docker compose -f $HOME/dotfiles/scripts/robocup_workspace.yml $argv
