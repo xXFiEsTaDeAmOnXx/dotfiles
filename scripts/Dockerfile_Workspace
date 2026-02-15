@@ -1,4 +1,5 @@
-FROM  fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:base
+ARG BASE_IMAGE=fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:base
+FROM  $BASE_IMAGE
 
 RUN apt update
 
