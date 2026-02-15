@@ -1,39 +1,56 @@
+# Define base image argument (default value provided)
 ARG BASE_IMAGE=fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:base
-FROM  $BASE_IMAGE
+FROM $BASE_IMAGE
 
+# Update package lists
 RUN apt update
 
+# Install Neovim
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 RUN rm -rf /opt/nvim-linux-x86_64
 RUN tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ENV PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
+# Install Node.js and utilities (unzip, exa, wl-clipboard, ripgrep)
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
-  && apt-get install -y nodejs  unzip exa wl-clipboard ripgrep  
+  && apt-get install -y nodejs unzip exa wl-clipboard ripgrep
 RUN npm install -g npm@latest
 
-
-
+# Install Go
 RUN curl -LO https://go.dev/dl/go1.25.2.linux-amd64.tar.gz
 RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.2.linux-amd64.tar.gz
 ENV PATH="$PATH:/usr/local/go/bin"
 
-RUN curl -sS https://starship.rs/install.sh  | sh -s -- --yes
+# Install Starship prompt
+RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
-# Addd  user
+# Define default user arguments (can be overridden during build)
+ARG USERNAME=niklas
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+# Install sudo
 RUN apt install sudo -y
-RUN groupadd -g 1000 niklas
-RUN useradd  -u 1000 -g niklas  -g niklas -d /home/niklas/ -s /bin/bash niklas
-# No password for user
-RUN echo "niklas ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/niklas
-USER niklas
-WORKDIR /home/niklas
 
-# Create directories
-RUN mkdir -p /home/niklas/.config
-RUN mkdir -p /home/niklas/ros2_ws/src
+# Create group
+RUN groupadd -g ${USER_GID} ${USERNAME}
 
-# Copy Config NVIM and common config
+# Create user (-m automatically creates the home directory)
+RUN useradd -u ${USER_UID} -g ${USER_GID} -m -d /home/${USERNAME} -s /bin/bash ${USERNAME}
+
+# Configure passwordless sudo for the user
+RUN echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
+
+# Switch to the new user
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+
+# Create necessary directories
+RUN mkdir -p /home/${USERNAME}/.config
+RUN mkdir -p /home/${USERNAME}/ros2_ws/src
+
+# Install Git and clone custom configuration (Neovim, bashrc, etc.)
 RUN sudo apt install git -y
 RUN git clone https://github.com/xXFiEsTaDeAmOnXx/ros2_docker_configs.git
 RUN mv ros2_docker_configs/.bashrc .
@@ -41,25 +58,10 @@ RUN touch .bash_history
 RUN mv ros2_docker_configs/.config/* .config/
 RUN rm -r ros2_docker_configs
 
-# Install rustup
-RUN curl https://sh.rustup.rs -sSf | sh  -s -- -y
-ENV PATH="/home/niklas/.cargo/bin:${PATH}"
+# Install Rust (rustup)
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/home/${USERNAME}/.cargo/bin:${PATH}"
 
-
-# copy ros2_ws and tiago_ws to the home
-RUN sudo cp -r /root/tiago_ws /home/niklas
-RUN sudo mv /root/ros2_ws  /root/rwu_ws
-RUN  sudo cp -r /root/rwu_ws /home/niklas
-RUN sudo chown  niklas:niklas -R /home/niklas/rwu_ws/
-RUN cd /home/niklas/rwu_ws && rm -rf build/ install/ log/&& source /opt/ros/humble/setup.bash && colcon build
-RUN sudo chown  niklas:niklas -R /home/niklas/tiago_ws/
-RUN cd /home/niklas/tiago_ws && rm -rf build/ install/ log/ && source /opt/ros/humble/setup.bash && colcon build
-
-RUN echo '#!/bin/bash' > /home/niklas/entrypoint.sh \
- && echo 'exec "$@"' >> /home/niklas/entrypoint.sh \
- && chmod +x /home/niklas/entrypoint.sh
-ENTRYPOINT ["/home/niklas/entrypoint.sh"]
-
+# Adjust root permissions
 RUN sudo chmod 777 /root
-RUN sudo chown -R niklas:niklas /root
-
+RUN sudo chown -R ${USERNAME}:${USER_GID} /root

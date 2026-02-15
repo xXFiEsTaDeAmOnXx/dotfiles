@@ -1,7 +1,7 @@
 ---
 services:
-  robocup_workspace:
-    image: robocup_workspace
+  tiago_ws:
+    image: tiago_ws
     build:
       context: .
       dockerfile: Dockerfile_Workspace
@@ -26,5 +26,35 @@ services:
       - $PWD:/home/niklas/ros2_ws/src
     runtime: nvidia
     command: tail -f /dev/null
+
+  kate_ws:
+    image: kate_ws
+    build:
+      context: .
+      dockerfile: Dockerfile_Workspace
+      args:
+        BASE_IMAGE: fbe-dockerreg.rwu.de/prj-iki-ros2/robots/kate/kate_base:kate_core
+    environment:
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+      DISPLAY: $DISPLAY
+      WAYLAND_DISPLAY: ${WAYLAND_DISPLAY}
+      XDG_RUNTIME_DIR: /run/user/1000
+      QT_X11_NO_MITSHM: '1'
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,video,utility,graphics
+      SIM: true
+    privileged: true
+    network_mode: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/root/.Xauthority
+      - /run/user/1000:/run/user/1000
+      - ros2_robocup_ws_dev_home:/home/niklas
+      - $PWD:/home/niklas/ros2_ws/src
+    runtime: nvidia
+    command: tail -f /dev/null
+
+
+
 volumes:
     ros2_robocup_ws_dev_home:  
