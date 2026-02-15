@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile_Workspace
       args:
-        BASE_IMAGE: fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/tiago_base:base
+        BASE_IMAGE: fbe-dockerreg.rwu.de/prj-iki-ros2/robots/tiago/iki_tiago_base:iki_tiago_core
     environment:
       ROS_DOMAIN_ID: $ROS_DOMAIN_ID
       DISPLAY: $DISPLAY
@@ -15,6 +15,7 @@ services:
       QT_X11_NO_MITSHM: '1'
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: compute,video,utility,graphics
+      SIM: true
     privileged: true
     network_mode: host
     volumes:
