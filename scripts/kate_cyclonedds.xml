@@ -1,0 +1,25 @@
+<CycloneDDS>
+  <Domain>
+    <General>
+      <Interfaces>
+        <!-- Pick whichever NIC has an IP in 192.168.66.0/24 -->
+        <NetworkInterface address="192.168.77.0" presence_required="false"/>
+
+      </Interfaces>
+
+      <!-- Keep multicast only for discovery; everything else unicast -->
+      <AllowMulticast>spdp</AllowMulticast>
+      <!-- Receive multicast only on the preferred interface(s) above -->
+      <MulticastRecvNetworkInterfaceAddresses>preferred</MulticastRecvNetworkInterfaceAddresses>
+    </General>
+    <Discovery>
+      <ParticipantIndex>auto</ParticipantIndex>
+      <Peers>
+	      <Peer Address="192.168.77.77"/>
+        <Peer Address="localhost"/>
+      </Peers>
+      <MaxAutoParticipantIndex>500</MaxAutoParticipantIndex>
+    </Discovery>
+  </Domain>
+</CycloneDDS>
+
