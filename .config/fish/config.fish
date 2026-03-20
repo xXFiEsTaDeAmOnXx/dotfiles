@@ -132,7 +132,7 @@ set -x KATE_ZOTAK_BOX iki@192.168.77.77
 
 
 function robocup_ws
-    docker compose -f $HOME/dotfiles/scripts/robocup_workspace.yml $argv
+    docker compose -f $HOME/dotfiles/scripts/robocup_workspace.yml run --rm -it $argv bash
 end
 
 # function fish_prompt
