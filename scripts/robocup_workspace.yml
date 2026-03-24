@@ -22,9 +22,9 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
-      - ros2_robocup_ws_dev_home:/home/nk-213780
+      - ros2_robocup_ws_dev_home:/home/niklas
       - $PWD:/home/niklas/ros2_ws/src
-      - ./tiago_cyclonedds.xml:/home/nk-213780/tiago_cyclonedds.xml
+      - ./tiago_cyclonedds.xml:/home/niklas/tiago_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
 
@@ -44,7 +44,7 @@ services:
       QT_X11_NO_MITSHM: '1'
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: compute,video,utility,graphics
-      CYCLONEDDS_URI: file:///home/nk-213780/tiago_cyclonedds.xml
+      CYCLONEDDS_URI: file:///home/niklas/tiago_cyclonedds.xml
       SIM: false
     privileged: true
     network_mode: host
@@ -52,9 +52,9 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
-      - ros2_robocup_ws_dev_home:/home/nk-213780
+      - ros2_robocup_ws_dev_home:/home/niklas
       - $PWD:/home/niklas/ros2_ws/src
-      - ./tiago_cyclonedds.xml:/home/nk-213780/tiago_cyclonedds.xml
+      - ./tiago_cyclonedds.xml:/home/niklas/tiago_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
 
@@ -83,9 +83,9 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
-      - ros2_robocup_ws_dev_home:/home/nk-213780
+      - ros2_robocup_ws_dev_home:/home/niklas
       - $PWD:/home/niklas/ros2_ws/src
-      - ./kate_cyclonedds.xml:/home/nk-213780/kate_cyclonedds.xml
+      - ./kate_cyclonedds.xml:/home/niklas/kate_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
 
@@ -104,7 +104,7 @@ services:
       QT_X11_NO_MITSHM: '1'
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: compute,video,utility,graphics
-      CYCLONEDDS_URI: file:///home/nk-213780/kate_cyclonedds.xml
+      CYCLONEDDS_URI: file:///home/niklas/kate_cyclonedds.xml
       SIM: false
     privileged: true
     network_mode: host
@@ -112,9 +112,9 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
-      - ros2_robocup_ws_dev_home:/home/nk-213780
-      - $PWD:/home/nk-213780/ros2_ws/src
-      - ./kate_cyclonedds.xml:/home/nk-213780/kate_cyclonedds.xml
+      - ros2_robocup_ws_dev_home:/home/niklas
+      - $PWD:/home/niklas/ros2_ws/src
+      - ./kate_cyclonedds.xml:/home/niklas/kate_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
 
