@@ -23,7 +23,7 @@ services:
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
       - ros2_robocup_ws_dev_home:/home/nk-213780
-      - $PWD:/home/nk-213780/ros2_ws/src
+      - $PWD:/home/niklas/ros2_ws/src
       - ./tiago_cyclonedds.xml:/home/nk-213780/tiago_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
@@ -53,7 +53,7 @@ services:
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
       - ros2_robocup_ws_dev_home:/home/nk-213780
-      - $PWD:/home/nk-213780/ros2_ws/src
+      - $PWD:/home/niklas/ros2_ws/src
       - ./tiago_cyclonedds.xml:/home/nk-213780/tiago_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
@@ -84,7 +84,7 @@ services:
       - $HOME/.Xauthority:/root/.Xauthority
       - /run/user/1000:/run/user/1000
       - ros2_robocup_ws_dev_home:/home/nk-213780
-      - $PWD:/home/nk-213780/ros2_ws/src
+      - $PWD:/home/niklas/ros2_ws/src
       - ./kate_cyclonedds.xml:/home/nk-213780/kate_cyclonedds.xml
     # runtime: nvidia
     command: tail -f /dev/null
