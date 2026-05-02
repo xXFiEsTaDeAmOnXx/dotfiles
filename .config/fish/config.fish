@@ -136,6 +136,10 @@ function robocup_ws
     docker compose -f $HOME/dotfiles/scripts/robocup_workspace.yml run --rm -it $argv -- bash
 end
 
+function opencode_ws
+    docker compose -f $HOME/dotfiles/scripts/opencode_workspace.yml run --rm -it opencode  opencode
+end
+
 # function fish_prompt
 #   set_color cyan; echo (pwd)
 #   set_color green; echo '> '

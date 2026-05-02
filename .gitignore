@@ -107,3 +107,5 @@
 !scripts/robocup_workspace.yml
 !scripts/Dockerfile_Workspace
 !scripts/update-docker-container.sh
+!scripts/opencode_workspace.yml
+!scripts/Dockerfile.opencode

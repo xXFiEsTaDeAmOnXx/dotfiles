@@ -1,0 +1,19 @@
+---
+services:
+  opencode:
+    image: opencode_sandbox
+    build:
+      context: .
+      dockerfile: Dockerfile.opencode
+      args:
+        USERNAME: niklas
+        USER_UID: 1000
+        USER_GID: 1000
+    volumes:
+      - opencode_home:/home/niklas
+      - $PWD:/home/niklas/workspace
+    command: tail -f /dev/null
+ 
+volumes:
+  opencode_home:
+ 
