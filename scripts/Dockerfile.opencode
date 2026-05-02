@@ -37,6 +37,11 @@ RUN mkdir -p \
   /home/${USERNAME}/.local/share/opencode \
   /home/${USERNAME}/workspace
 
+# skills 
+RUN git clone https://github.com/anthropics/skills \
+  /home/${USERNAME}/.config/opencode/skills
+
+
 # Yolo config: 
 RUN echo '{\n\
   "$schema": "https://opencode.ai/config.json",\n\
