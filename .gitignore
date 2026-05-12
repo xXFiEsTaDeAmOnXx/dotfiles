@@ -39,19 +39,19 @@
 
 # hyprland
 !/.config/hypr/hyprland
-!/.config/hypr/hyprland.conf
+!/.config/hypr/hyprland.lua
+!/.config/hypr/nwg_parser.lua 
 
 !/.config/xdg-desktop-portal
 !/.config/xdg-desktop-portal/hyprland-portals.conf
 
 #hyprland-Config
-!/.config/hypr/hyprland/general.conf
-#!/.config/hypr/hyprland/display.conf    ! git update-index --assume-unchanged .config/hypr/hyprland/display.conf
-!/.config/hypr/hyprland/colors.conf
-!/.config/hypr/hyprland/env.conf
-!/.config/hypr/hyprland/execs.conf
-!/.config/hypr/hyprland/keybinds.conf
-!/.config/hypr/hyprland/rules.conf
+!/.config/hypr/hyprland/general.lua
+!/.config/hypr/hyprland/colors.lua
+!/.config/hypr/hyprland/env.lua
+!/.config/hypr/hyprland/execs.lua
+!/.config/hypr/hyprland/keybinds.lua
+!/.config/hypr/hyprland/rules.lua
 
 
 # hyprland shaders
@@ -72,6 +72,8 @@
 !/.config/hypr/hyprland/scripts/start_geoclue_agent.sh
 !/.config/hypr/hyprland/scripts/workspace_action.sh
 !/.config/hypr/hyprland/scripts/zoom.sh
+!/.config/hypr/hyprland/scripts/snip_to_search.sh
+
 
 # hyprland ai scripts
 !/.config/hypr/hyprland/scripts/ai
