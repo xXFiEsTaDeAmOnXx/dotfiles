@@ -1,0 +1,27 @@
+# Font
+font-family = JetBrains Mono Nerd Font
+font-size = 11
+
+# Cursor
+cursor-style = bar
+
+# Padding
+window-padding-x = 22
+window-padding-y = 22
+
+# No close confirmation
+confirm-close-surface = false
+
+# Use fish shell
+command = fish
+
+# Scroll
+keybind = page_up=scroll_page_up
+keybind = page_down=scroll_page_down
+
+# Zoom
+keybind = ctrl++=increase_font_size:1
+keybind = ctrl+==increase_font_size:1
+keybind = ctrl+-=decrease_font_size:1
+keybind = ctrl+_=decrease_font_size:1
+keybind = ctrl+0=reset_font_size

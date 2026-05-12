@@ -19,6 +19,11 @@
 !/.config/kitty/
 !/.config/kitty/kitty.conf
 
+
+# ghostty-Config
+!/.config/ghostty/
+!/.config/ghostty/config.ghostty
+
 # Ranger-Config
 !/.config/ranger
 !/.config/ranger/rc.conf
