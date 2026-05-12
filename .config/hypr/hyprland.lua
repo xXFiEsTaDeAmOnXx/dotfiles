@@ -7,5 +7,6 @@ require("hyprland/colors")
 require("hyprland/keybinds")
 
 -- nwg-displays support
--- Temporary unitl nwg-displays supports lua
-require("nwg_parser")
+-- hardcoded temporary unitl nwg-displays supports lua
+require("monitors")
+require("workspaces")

@@ -40,7 +40,6 @@
 # hyprland
 !/.config/hypr/hyprland
 !/.config/hypr/hyprland.lua
-!/.config/hypr/nwg_parser.lua 
 
 !/.config/xdg-desktop-portal
 !/.config/xdg-desktop-portal/hyprland-portals.conf
