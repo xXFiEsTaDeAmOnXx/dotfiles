@@ -15,10 +15,6 @@ confirm-close-surface = false
 # Use fish shell
 command = fish
 
-# Scroll
-keybind = page_up=scroll_page_up
-keybind = page_down=scroll_page_down
-
 # Zoom
 keybind = ctrl++=increase_font_size:1
 keybind = ctrl+==increase_font_size:1
