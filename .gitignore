@@ -52,16 +52,7 @@
 !/.config/hypr/hyprland/execs.lua
 !/.config/hypr/hyprland/keybinds.lua
 !/.config/hypr/hyprland/rules.lua
-
-
-# hyprland shaders
-!/.config/hypr/shaders
-!/.config/hypr/shaders/chromatic_abberation.frag 
-!/.config/hypr/shaders/crt.frag
-!/.config/hypr/shaders/drugs.frag
-!/.config/hypr/shaders/extradark.frag
-!/.config/hypr/shaders/invert.frag
-!/.config/hypr/shaders/solarized.frag
+!/.config/hypr/hyprland/variables.lua
 
 
 # hyprland scrips
