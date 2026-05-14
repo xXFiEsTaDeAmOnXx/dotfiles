@@ -34,5 +34,6 @@ hl.on("hyprland.start", function()
 	-- Autostart
 	hl.exec_cmd("headsetcontrol-qt &")
 
-	hl.exec_cmd("sleep 2 && hyprctl reload") -- fix cursor bug
+	-- ugly fix https://github.com/hyprwm/Hyprland/discussions/14382
+	hl.exec_cmd("sleep 10 && hyprctl reload")
 end)
