@@ -33,7 +33,4 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
 	-- Autostart
 	hl.exec_cmd("headsetcontrol-qt &")
-
-	-- ugly fix https://github.com/hyprwm/Hyprland/discussions/14382
-	hl.exec_cmd("sleep 10 && hyprctl reload")
 end)
