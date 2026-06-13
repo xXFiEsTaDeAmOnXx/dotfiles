@@ -24,3 +24,6 @@ keybind = ctrl+0=reset_font_size
 
 # Mouse scroll speed (lower = slower)
 mouse-scroll-multiplier = 0.5
+
+# required for nautilus-open-any-terminal to work
+gtk-single-instance = false
