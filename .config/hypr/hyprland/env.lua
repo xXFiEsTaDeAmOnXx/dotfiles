@@ -18,6 +18,7 @@ hl.env(
 hl.env("QT_QPA_PLATFORM", "wayland")
 hl.env("QT_QPA_PLATFORMTHEME", "kde")
 hl.env("XDG_MENU_PREFIX", "plasma-")
+hl.env("GTK_THEME", "Adwaita:dark")
 
 -- Virtual environment
 hl.env("ILLOGICAL_IMPULSE_VIRTUAL_ENV", "$HOME/.local/state/quickshell/.venv")
