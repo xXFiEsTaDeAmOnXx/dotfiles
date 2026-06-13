@@ -24,3 +24,6 @@ hl.env("ILLOGICAL_IMPULSE_VIRTUAL_ENV", "$HOME/.local/state/quickshell/.venv")
 
 -- Terminal
 hl.env("TERMINAL", "kitty -1")
+
+--- Fix natulisu thems
+hl.env("ADW_DISABLE_PORTAL", "1")
