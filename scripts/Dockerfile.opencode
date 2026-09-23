@@ -29,17 +29,13 @@ RUN userdel -r ubuntu 2>/dev/null || true \
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 
-RUN curl -fsSL https://opencode.ai/install | bash
+RUN curl -fsSL https://opencode.ai/v2/install | bash 
 ENV PATH="/home/${USERNAME}/.opencode/bin:${PATH}"
 
 RUN mkdir -p \
   /home/${USERNAME}/.config/opencode \
   /home/${USERNAME}/.local/share/opencode \
   /home/${USERNAME}/workspace
-
-# skills 
-RUN git clone https://github.com/anthropics/skills \
-  /home/${USERNAME}/.config/opencode/skills
 
 
 # Yolo config: 
