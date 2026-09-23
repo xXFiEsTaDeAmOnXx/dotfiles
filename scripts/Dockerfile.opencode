@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=ubuntu:24.04
+ARG BASE_IMAGE=fbe-dockerreg.rwu.de/prj-iki-ros2/orga/ros2-docker-base:jazzy
 FROM $BASE_IMAGE
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -38,25 +38,9 @@ RUN mkdir -p \
   /home/${USERNAME}/workspace
 
 
-# Yolo config: 
-RUN echo '{\n\
-  "$schema": "https://opencode.ai/config.json",\n\
-  "agent": {\n\
-  "yolo": {\n\
-  "description": "Dangerously skip permissions",\n\
-  "permission": {\n\
-  "*": {\n\
-  "*": "allow"\n\
-  }\n\
-  }\n\
-  }\n\
-  }\n\
-  }' > /home/${USERNAME}/.config/opencode/opencode.json
 
 
-
-
-VOLUME ["/home/${USERNAME}/workspace"]
+ENTRYPOINT ["/bin/bash", "-c"]
 WORKDIR /home/${USERNAME}/workspace
 
 CMD ["opencode"]
