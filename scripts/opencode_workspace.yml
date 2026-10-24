@@ -8,8 +8,10 @@ services:
         USERNAME: niklas
         USER_UID: 1000
         USER_GID: 1000
+    privileged: true
     volumes:
       - $PWD:/home/niklas/workspace
       - ~/.config/opencode:/home/niklas/.config/opencode
       - ~/.local/share/opencode:/home/niklas/.local/share/opencode
+      - /dev:/dev
     command: tail -f /dev/null
